@@ -26,7 +26,7 @@ const startGame = () =>{
   //window.getComputedStyle(mario): Obtém todos os estilos CSS aplicados ao elemento mario.
   //o + no inicio é para converter a string para numero
 
-  if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 110) {
+ if (pipePosition < 120 && pipePosition > 0 && marioPosition < 100) {
     pipe.style.animation = "none";
     pipe.style.left = `${pipePosition}px`;
 
@@ -50,10 +50,10 @@ document.addEventListener("keydown", (event) => {//Adiciona um ouvinte de evento
 });
 
 restartButton.addEventListener('click',()=>{
-  //reiniciando o jogo aqui
+  // Reiniciando o jogo aqui
   pipe.style.animation = "";
   pipe.style.left = "";
-  
+
   mario.style.animation = "";
   mario.style.bottom = "";
   mario.src = "imagens/mario.gif"; // ou o caminho da imagem original do mario
@@ -62,6 +62,12 @@ restartButton.addEventListener('click',()=>{
 
   overlay.style.display = "none";
   restartButton.style.display = "none";
+  
+  // Reinicia a posição inicial do pipe para evitar detecção de colisão incorreta
+  pipe.style.left = "initial";
+  
+  // Reinicia a animação do pipe
+  pipe.style.animation = "pipe-animation 1.5s infinite linear";
   
   startGame();
 })
