@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @keyframes pipe-animation{
     from{
         right: -80px;
@@ -31,12 +32,41 @@
 
 .game-board{
     width: 100%;
-    height: 500px;
-    border: 15px solid green;
+    height: 100vh;
+    border-bottom: 15px solid green;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
     background: linear-gradient(#87ceeb,#e0f6ff);
+}
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+    z-index: 10; /* Coloca o overlay acima de outros elementos */
+  }
+  
+#restart{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 22px;
+    font:700 24px "Oswald", sans-serif;
+    cursor: pointer;
+    background: linear-gradient( #ffffff,#69bcdf);
+    border: 1px solid rgba(0, 0, 0, 0.519);
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.589);
+    z-index: 20;
+}
+#restart:hover{
+    background: linear-gradient( #ffffff,#618df4);
 }
 .clouds{
     position: absolute;
