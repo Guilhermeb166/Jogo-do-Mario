@@ -77,8 +77,6 @@
     width: 130px;
     position: absolute;
     bottom: 0;
-    
-   
 }
 .jump{
     animation: mario-jump 800ms ease-out;

@@ -4,6 +4,7 @@ const restartButton = document.querySelector("#restart");
 const overlay = document.querySelector("#overlay");
 
 const jump = () => {
+  
   mario.classList.add("jump");
   //Adiciona a classe jump ao elemento mario, fazendo ele pular.
 
