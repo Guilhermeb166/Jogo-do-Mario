@@ -15,41 +15,44 @@ const jump = () => {
 
 let gameLoop;
 
+const startGame = () => {
+  gameLoop = setInterval(() => {
+    //Define um intervalo que executa a função a cada 10 milissegundos.
+    const pipePosition = pipe.offsetLeft; //Obtém a posição horizontal do pipe em relação ao viewport
+    const marioPosition = +window
+      .getComputedStyle(mario)
+      .bottom.replace("px", "");
+    //Obtém a posição vertical do mario a partir do estilo computado do elemento e converte para número.
 
+    //window.getComputedStyle(mario): Obtém todos os estilos CSS aplicados ao elemento mario.
+    //o + no inicio é para converter a string para numero
 
-const startGame = () =>{
-  gameLoop= setInterval(() => {//Define um intervalo que executa a função a cada 10 milissegundos.
-  const pipePosition = pipe.offsetLeft;//Obtém a posição horizontal do pipe em relação ao viewport
-  const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "")
-  //Obtém a posição vertical do mario a partir do estilo computado do elemento e converte para número.
+    if (pipePosition < 120 && pipePosition > 0 && marioPosition < 100) {
+      pipe.style.animation = "none";
+      pipe.style.left = `${pipePosition}px`;
 
-  //window.getComputedStyle(mario): Obtém todos os estilos CSS aplicados ao elemento mario.
-  //o + no inicio é para converter a string para numero
+      mario.style.animation = "none";
+      mario.style.bottom = `${marioPosition}px`;
+      mario.src = "imagens/game-over.png";
+      mario.style.width = "75px";
+      mario.style.marginLeft = "50px";
 
- if (pipePosition < 120 && pipePosition > 0 && marioPosition < 100) {
-    pipe.style.animation = "none";
-    pipe.style.left = `${pipePosition}px`;
+      clearInterval(gameLoop);
+      overlay.style.display = "block";
+      restartButton.style.display = "block";
+    }
+  }, 10);
+};
 
-    mario.style.animation = "none";
-    mario.style.bottom = `${marioPosition}px`;
-    mario.src = "imagens/game-over.png";
-    mario.style.width = "75px";
-    mario.style.marginLeft = "50px";
-
-    clearInterval(gameLoop);
-    overlay.style.display='block'
-    restartButton.style.display='block'
-  }
-}, 10);
-}
-
-document.addEventListener("keydown", (event) => {//Adiciona um ouvinte de evento para quando qualquer tecla é pressionada.
-  if (event.code === "Space") {//Verifica se a tecla pressionada é a tecla "Espaço".
+document.addEventListener("keydown", (event) => {
+  //Adiciona um ouvinte de evento para quando qualquer tecla é pressionada.
+  if (event.code === "Space") {
+    //Verifica se a tecla pressionada é a tecla "Espaço".
     jump();
   }
 });
 
-restartButton.addEventListener('click',()=>{
+restartButton.addEventListener("click", () => {
   // Reiniciando o jogo aqui
   pipe.style.animation = "";
   pipe.style.left = "";
@@ -62,15 +65,17 @@ restartButton.addEventListener('click',()=>{
 
   overlay.style.display = "none";
   restartButton.style.display = "none";
-  
+
   // Reinicia a posição inicial do pipe para evitar detecção de colisão incorreta
   pipe.style.left = "initial";
-  
+
   // Reinicia a animação do pipe
   pipe.style.animation = "pipe-animation 1.5s infinite linear";
-  
+
   startGame();
-})
+});
 
 // Inicia o jogo pela primeira vez
 startGame();
+
+document.addEventListener("touchstart", jump);
