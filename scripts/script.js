@@ -52,6 +52,12 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+document.addEventListener("touchstart", (event) => { // Adiciona um ouvinte de evento para quando a tela é tocada.
+  if (event.target !== restartButton) {
+    jump();
+  }
+});
+
 restartButton.addEventListener("click", () => {
   // Reiniciando o jogo aqui
   pipe.style.animation = "";
@@ -75,7 +81,9 @@ restartButton.addEventListener("click", () => {
   startGame();
 });
 
+
+
 // Inicia o jogo pela primeira vez
 startGame();
 
-document.addEventListener("touchstart", jump);
+
