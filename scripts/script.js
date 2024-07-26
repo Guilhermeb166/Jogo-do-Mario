@@ -4,15 +4,12 @@ const restartButton = document.querySelector("#restart");
 const overlay = document.querySelector("#overlay");
 
 const jump = () => {
-  if (isJumping) return; // Evita múltiplos pulos simultâneos
-
-  isJumping = true;
   mario.classList.add("jump");
   //Adiciona a classe jump ao elemento mario, fazendo ele pular.
 
   setTimeout(() => {
     mario.classList.remove("jump");
-    isJumping = false;
+    
   }, 800);
   //Remove a classe jump do elemento mario após 800 milissegundos.
 };
