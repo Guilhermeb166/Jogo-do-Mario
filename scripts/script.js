@@ -56,7 +56,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.addEventListener("touchstart", (event) => { // Adiciona um ouvinte de evento para quando a tela é tocada.
+document.addEventListener("click", (event) => { // Adiciona um ouvinte de evento para quando a tela é tocada.
   if (event.target !== restartButton) {
     jump();
   }
