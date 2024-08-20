@@ -31,9 +31,7 @@
         height: 80vh;
     }
 
-    .game-board {
-        height: 100vh;
-    }
+    
 
     #score {
         font-size: 40px;
