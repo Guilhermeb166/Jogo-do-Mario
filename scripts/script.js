@@ -2,6 +2,7 @@ const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const restartButton = document.querySelector("#restart");
 const overlay = document.querySelector("#overlay");
+const scoreElement = document.querySelector("#score");
 
 const jump = () => {
   
@@ -14,10 +15,16 @@ const jump = () => {
   }, 800);
   //Remove a classe jump do elemento mario após 800 milissegundos.
 };
-
+let score = 0
 let gameLoop;
+let pipePassed = false;  // Variável para verificar se o pipe já passou
+
 
 const startGame = () => {
+  score = 0;
+  scoreElement.textContent = `SCORE: ${score}`;
+  pipePassed = false;  // Reseta o estado do pipePassed
+
   gameLoop = setInterval(() => {
     //Define um intervalo que executa a função a cada 10 milissegundos.
     const pipePosition = pipe.offsetLeft; //Obtém a posição horizontal do pipe em relação ao viewport
@@ -42,6 +49,15 @@ const startGame = () => {
       clearInterval(gameLoop);
       overlay.style.display = "block";
       restartButton.style.display = "block";
+    } else if (pipePosition <= 0 && !pipePassed) {
+      // Pipe saiu da tela e ainda não foi contabilizado
+      score++;
+      scoreElement.textContent = `SCORE: ${score}`;
+      pipePassed = true;  // Marca que o pipe passou
+    }
+
+    if (pipePosition > 0) {
+      pipePassed = false;  // Reseta quando o pipe volta para a tela
     }
   }, 10);
 };

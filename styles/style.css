@@ -1,44 +1,66 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@keyframes pipe-animation{
-    from{
+
+
+@keyframes pipe-animation {
+    from {
         right: -80px;
     }
-    to{
+
+    to {
         right: 100%;
     }
 }
-@keyframes mario-jump{
-    0%{bottom: 0;}
-    40%{bottom: 160px;}
-    50%{bottom: 165px;}
-    60%{bottom: 160px;}
-    100%{bottom: 0;}
+
+@keyframes mario-jump {
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 150px;
+    }
+
+    50% {
+        bottom: 155px;
+    }
+
+    60% {
+        bottom: 150px;
+    }
+
+    100% {
+        bottom: 0;
+    }
 
 }
-@keyframes clouds-animation{
-    from{
+
+@keyframes clouds-animation {
+    from {
         right: -550px;
     }
-    to{
+
+    to {
         right: 100%;
     }
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.game-board{
+.game-board {
     width: 100%;
     height: 100vh;
     border-bottom: 15px solid green;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(#87ceeb,#e0f6ff);
+    background: linear-gradient(#87ceeb, #e0f6ff);
 }
+
 #overlay {
     display: none;
     position: fixed;
@@ -46,44 +68,68 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
-    z-index: 10; /* Coloca o overlay acima de outros elementos */
-  }
-  
-#restart{
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo escuro semitransparente */
+    z-index: 10;
+    /* Coloca o overlay acima de outros elementos */
+}
+
+.scoreContainer {
+    width: 100%;
+    height: 580px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#score {
+    color: #297F18;
+    text-shadow: 1px 1px 1px #000;
+    font: 700 50px "Oswald", sans-serif;
+    letter-spacing: 1px;
+}
+
+#restart {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px 22px;
-    font:700 24px "Oswald", sans-serif;
+    font: 700 24px "Oswald", sans-serif;
     cursor: pointer;
-    background: linear-gradient( #ffffff,#69bcdf);
+    background: linear-gradient(#ffffff, #69bcdf);
     border: 1px solid rgba(0, 0, 0, 0.519);
     border-radius: 5px;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.589);
     z-index: 20;
 }
-#restart:hover{
-    background: linear-gradient( #ffffff,#618df4);
+
+#restart:hover {
+    background: linear-gradient(#ffffff, #618df4);
 }
-.clouds{
+
+.clouds {
     position: absolute;
     width: 550px;
     animation: clouds-animation 20s infinite linear;
 }
-.mario{
+
+.mario {
     width: 130px;
     position: absolute;
     bottom: 0;
 }
-.jump{
+
+.jump {
     animation: mario-jump 800ms ease-out;
 }
-.pipe{
+
+.pipe {
     position: absolute;
     bottom: 0;
-    width: 80px;
-    animation: pipe-animation 1s infinite linear;
+    width: 85px;
+    animation: pipe-animation 1s infinite linear
+    ;
 }
