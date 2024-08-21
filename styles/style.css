@@ -49,6 +49,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none; /* Impede a seleção de texto/imagens */
+    -webkit-tap-highlight-color: transparent; /* Remove o destaque ao tocar em elementos */
+}
+img {
+    pointer-events: none; /* Evita que imagens sejam clicáveis */
+}
+body{
+    height: 100vh;
 }
 
 .game-board {

@@ -3,9 +3,11 @@
         0% {
             bottom: 0;
         }
-        20%{
+
+        20% {
             bottom: 120px;
         }
+
         35% {
             bottom: 160px;
         }
@@ -17,7 +19,8 @@
         65% {
             bottom: 160px;
         }
-        80%{
+
+        80% {
             bottom: 120px;
         }
 
@@ -27,11 +30,7 @@
 
     }
 
-    body {
-        height: 80vh;
-    }
 
-    
 
     #score {
         font-size: 40px;
